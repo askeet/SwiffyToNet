@@ -1,0 +1,1 @@
+It's common project in C# for interaction with swiffy object (HTML5). 

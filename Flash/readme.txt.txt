@@ -1,0 +1,1 @@
+It's common library in Action Script 2.0
