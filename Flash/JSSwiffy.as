@@ -21,3 +21,7 @@ SetSetVar = function(value){
 
 addProperty("SetVar",GetStatus,SetSetVar);
 
+//CurMovie = MovieClip1;
+//GotoAndStop = 1;
+//CurField = "text";
+//SetVar = 0;
