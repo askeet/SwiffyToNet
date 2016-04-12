@@ -1,3 +1,8 @@
 *.pdb
 NetProject/SwiftyProject/SwiftyProject/bin/Debug/SwiftyProject.vshost.exe
 NetProject/SwiftyProject/.vs/SwiftyProject/v14/.suo
+NetProject/SwiftyProject/SwiftyProject/obj/Debug/SwiftyProject.csproj.FileListAbsolute.txt
+*.Cache
+NetProject/SwiftyProject/SwiftyProject/obj/Debug/SwiftyProject.exe
+NetProject/SwiftyProject/SwiftyProject/obj/Debug/SwiftyProject.Properties.Resources.resources
+NetProject/SwiftyProject/SwiftyProject/obj/Debug/SwiftyProject.MainForm.resources
