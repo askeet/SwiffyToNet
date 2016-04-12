@@ -5,4 +5,4 @@ E:\GitHub\SwiffyToNet\NetProject\SwiftyProject\SwiftyProject\obj\Debug\SwiftyPro
 E:\GitHub\SwiffyToNet\NetProject\SwiftyProject\SwiftyProject\obj\Debug\SwiftyProject.csproj.GenerateResource.Cache
 E:\GitHub\SwiffyToNet\NetProject\SwiftyProject\SwiftyProject\obj\Debug\SwiftyProject.exe
 E:\GitHub\SwiffyToNet\NetProject\SwiftyProject\SwiftyProject\obj\Debug\SwiftyProject.pdb
-E:\GitHub\SwiffyToNet\NetProject\SwiftyProject\SwiftyProject\obj\Debug\SwiftyProject.Form1.resources
+E:\GitHub\SwiffyToNet\NetProject\SwiftyProject\SwiftyProject\obj\Debug\SwiftyProject.MainForm.resources
