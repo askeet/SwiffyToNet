@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lib\ImportLib.cs" />
+    <Compile Include="Lib\MovieClip.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
