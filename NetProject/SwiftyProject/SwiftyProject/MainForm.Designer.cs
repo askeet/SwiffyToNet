@@ -28,52 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.OpenFile = new System.Windows.Forms.Button();
+            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.button2 = new System.Windows.Forms.Button();
+            this.ExampleSetVariable = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // OpenFile
             // 
-            this.button1.Location = new System.Drawing.Point(32, 23);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 62);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Open File HTML";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.OpenFile.Location = new System.Drawing.Point(32, 23);
+            this.OpenFile.Name = "OpenFile";
+            this.OpenFile.Size = new System.Drawing.Size(136, 62);
+            this.OpenFile.TabIndex = 0;
+            this.OpenFile.Text = "Open File HTML";
+            this.OpenFile.UseVisualStyleBackColor = true;
+            this.OpenFile.Click += new System.EventHandler(this.OpenFile_Click);
             // 
-            // webBrowser1
+            // webBrowser
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(218, 23);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(369, 274);
-            this.webBrowser1.TabIndex = 1;
+            this.webBrowser.Location = new System.Drawing.Point(218, 23);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Name = "webBrowser";
+            this.webBrowser.ScriptErrorsSuppressed = true;
+            this.webBrowser.Size = new System.Drawing.Size(369, 274);
+            this.webBrowser.TabIndex = 1;
             // 
             // openFileDialog
             // 
             this.openFileDialog.Filter = "HTML files|*.html";
             // 
-            // button2
+            // ExampleSetVariable
             // 
-            this.button2.Location = new System.Drawing.Point(32, 102);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 62);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Set Var";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.ExampleSetVariable.Location = new System.Drawing.Point(32, 102);
+            this.ExampleSetVariable.Name = "ExampleSetVariable";
+            this.ExampleSetVariable.Size = new System.Drawing.Size(136, 62);
+            this.ExampleSetVariable.TabIndex = 2;
+            this.ExampleSetVariable.Text = "Set Var";
+            this.ExampleSetVariable.UseVisualStyleBackColor = true;
+            this.ExampleSetVariable.Click += new System.EventHandler(this.ExampleSetVariable_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(629, 309);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.webBrowser1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ExampleSetVariable);
+            this.Controls.Add(this.webBrowser);
+            this.Controls.Add(this.OpenFile);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.ResumeLayout(false);
@@ -82,10 +83,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Button OpenFile;
+        private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button ExampleSetVariable;
     }
 }
 

@@ -15,18 +15,18 @@ namespace SwiftyProject
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OpenFile_Click(object sender, EventArgs e)
         {
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                webBrowser1.Navigate(openFileDialog.FileName);
+                webBrowser.Navigate(openFileDialog.FileName);
                 //webBrowser1.Document.InvokeScript("SetVariable", new Object[] { "VarText1=6" });
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ExampleSetVariable_Click(object sender, EventArgs e)
         {
-            webBrowser1.Document.InvokeScript("SetVariable", new Object[] { "VarText1=6" });
+            webBrowser.Document.InvokeScript("SetVariable", new Object[] { "VarText1=6" });
         }
     }
 }

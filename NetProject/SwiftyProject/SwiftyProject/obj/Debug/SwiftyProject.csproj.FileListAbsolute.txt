@@ -1,6 +1,5 @@
 E:\GitHub\SwiffyToNet\NetProject\SwiftyProject\SwiftyProject\bin\Debug\SwiftyProject.exe
 E:\GitHub\SwiffyToNet\NetProject\SwiftyProject\SwiftyProject\bin\Debug\SwiftyProject.pdb
-E:\GitHub\SwiffyToNet\NetProject\SwiftyProject\SwiftyProject\obj\Debug\SwiftyProject.csprojResolveAssemblyReference.cache
 E:\GitHub\SwiffyToNet\NetProject\SwiftyProject\SwiftyProject\obj\Debug\SwiftyProject.Properties.Resources.resources
 E:\GitHub\SwiffyToNet\NetProject\SwiftyProject\SwiftyProject\obj\Debug\SwiftyProject.csproj.GenerateResource.Cache
 E:\GitHub\SwiffyToNet\NetProject\SwiftyProject\SwiftyProject\obj\Debug\SwiftyProject.exe
