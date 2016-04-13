@@ -1,134 +1,159 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 
 namespace SwiftyProject.Lib
 {
     class MovieClip
     {
+        WebBrowser webBrowser;
+        string nameMovie = "";
+        public MovieClip(WebBrowser webBrowser, string nameMovie) {
+            this.webBrowser = webBrowser;
+            this.nameMovie = nameMovie;    
+        }
+
+        
+
         //Уровень прозрачности мувиклипа.
-        byte _alpha;
+        public byte _alpha;
 
         //Только для чтения; номер кадра, в котором в данный момент находится воспроизводящая головка.
-        int _currentframe;
+        public int _currentframe;
 
         //Только для чтения; абсолютный путь в слэш-нотации к мувиклипу, на который перетаскиваемый мувиклип был "брошен".
-        int _droptarget;
+        public int _droptarget;
 
         //Булева величина, показывающая, доступен или нет(enabled) мувиклип.
-        bool enabled;
+        public bool enabled;
 
         //Булева величина, показывающая, может ли мувиклип получать фокус.        
-        bool focusEnabled;
+        public bool focusEnabled;
 
         //Булева величина, показывающая, отображается ли желтый прямоугольник вокруг мувиклипа, когда он находится в фокусе.
-        bool _focusrect;
+        public bool _focusrect;
 
         //Только для чтения; число уже загруженных кадров в загружаемом SWF файле.
-        int _framesloaded;
+        public int _framesloaded;
 
         //Высота мувиклипа в пикселах.
-        int _height;
+        public int _height;
 
         //Ссылка на мувиклип, служащая как "горячая зона" (hit area) для другого мувиклипа при проверке методом hitTest().
-        string hitArea;
+        public string hitArea;
 
         //Определяет, на что ссылается ключевое слово _root(на главный Таймлайн ролика-родителя или загруженного ролика) при загрузке SWF файла в мувиклип.
-        string _lockroot;
+        public string _lockroot;
 
         //Объект, связывающий объект класса ContextMenu с мувиклипом.
-        string menu;
+        public string menu;
 
        // Имя экземпляра мувиклипа.
-        string _name;
+        public string _name;
 
         //cсылка на мувиклип-родитель данного мувиклипа.
-        string _parent;
+        public string _parent;
 
         //Строка, отображающая качество рендеринга мувиклипа.
-        string _quality;
+        public string _quality;
 
         //Угол поворота мувиклипа в градусах.
-        string _rotation;
+        public string _rotation;
 
         //Количество секунд буферизации перед воспроизведением потокового звука.
-        int _soundbuftime;
+        public int _soundbuftime;
 
 
         //Булева величина, показывающая, включаются ли мувиклипы, вложенные в данный, в обход по клавише Tab.
-        bool tabChildren;
+        public bool tabChildren;
 
         //Булева величина, показывающая, включается ли мувиклип в обход по клавише Tab.
-        bool tabEnabled;
+        public bool tabEnabled;
 
         //Порядковый номер мувиклипа в обходе по клавише Tab.
-        int tabIndex;
+        public int tabIndex;
 
         //Только для чтения; путь к мувиклипу.
-        string _target;
+        public string _target;
 
         //Только для чтения; общее количество кадров в мувиклипе.
-        int _totalframes;
+        public int _totalframes;
 
         //Булева величина, показывающая, получают ли все прочие мувиклипы, помимо данного, оповещение при отпускании левой кнопки мыши.
-        bool trackAsMenu;
+        public bool trackAsMenu;
 
         //Только для чтения; URL, с которого SWF файл, содержащий данный мувиклип, был загружен.
-        string _url;
+        public string _url;
 
         //Булева величина, определяющая, превращается ли курсор в изображение руки при наведении его на мувиклип.
-        bool useHandCursor;
+        public bool useHandCursor;
 
         //Булева величина, определяющая, скрыт или видим мувиклип.
-        bool _visible;
+        public  bool _visible;
 
         //Ширина мувиклипа в пикселах.
-        int _width;
+        public int _width
+        {
+            set { ImportLib.SetField(webBrowser, nameMovie, "_width", value.ToString()); }             
+        }
 
         //Координата x мувиклипа.
-        int _x;
+        public float _x 
+        {
+            set { ImportLib.SetField(webBrowser, nameMovie, "_x",value.ToString()); }
+            get {
+                string Var = ImportLib.GetData(webBrowser, nameMovie, "_x");
+                if (Var == String.Empty) { Var = "-1"; };
+                return Convert.ToSingle(Var);
+            }
+        }
 
         //Только для чтения ; координата x указателя мыши в системе координат мувиклипа.
-        int _xmouse;
+        public int _xmouse;
 
         //Горизонтальный маштаб мувиклипа.
-        int _xscale;
+        public int _xscale;
 
         //Координата y мувиклипа.
-        int _y;
+        public int _y
+        {
+            set { ImportLib.SetField(webBrowser, nameMovie, "_y", value.ToString()); }
+        }
+
 
         //Только для чтения; координата y указателя мыши в системе координат мувиклипа.
-        int _ymouse;
+        public int _ymouse;
 
         //Вертикальный маштаб мувиклипа.
-        int _yscale;
+        public int _yscale;
 
         //Переводит воспроизводящую головку мувиклипа на указанный кадр и остонавливает воспроизведение.
-        void gotoAndStop() { }
+        public void gotoAndStop() { }
 
         //Начинает рисование заливки в указанном мувиклипе.
-        void beginFill(){}
+        public void beginFill() { }
 
         //Начинает рисование градиентной заливки в указанном мувиклипе.
-        void beginGradientFill(){}
+        public void beginGradientFill() { }
 
         //Удаляет все программно нарисованные в данном мувиклипе элементы.
-        void clear() { }
+        public void clear() { }
 
         //Рисует кривую, используя текущие настройки стиля линии.
-        void curveTo() { }
+        public void curveTo() { }
 
         //Заканчивает заливку, начатую MovieClip.beginFill() или MovieClip.beginGradientFill().
-        void endFill() { }
+        public void endFill() { }
 
         //Определяет вид линий, рисуемых при помощи MovieClip.lineTo() и MovieClip.curveTo(). 
-        void lineStyle() { }
+        public void lineStyle() { }
 
         //Рисует линию, используя текущие настройки стиля линии. 
-        void lineTo() { }
+        public void lineTo() { }
 
         //Перемещает точку, из которой начинается рисование, в указанные координаты.
-        void moveTo() { }
+        public void moveTo() { }
 
     }
 }
