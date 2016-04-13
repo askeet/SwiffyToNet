@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace SwiftyProject.Lib
 {
@@ -19,16 +21,27 @@ namespace SwiftyProject.Lib
         {
             public static string Variable = "";
             public static bool WaitEvent = true;
+
+            static object Sunc = new object();
+            static ManualResetEvent oSignalEvent = new ManualResetEvent(false);
             public void EventForGetData(string variable)
             {
+             
                 Variable = variable;
                 WaitEvent = false;
             }
-
+          
             public static string ForWaitGetData()
             {
+                System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+                sw.Start();
                 WaitEvent = true;
-                while (WaitEvent) Application.DoEvents();
+                while (WaitEvent)
+                {
+                    Application.DoEvents();
+                }
+                sw.Stop();
+                Console.WriteLine("Time="+  sw.ElapsedMilliseconds);
                 return Variable;
             }
 
@@ -47,8 +60,10 @@ namespace SwiftyProject.Lib
         public static string GetData(WebBrowser webBrowser, string NameMovie, string NameField)
         {
             webBrowser.Document.InvokeScript("SetVariable", new Object[] { String.Format("CurMovie={0}&CurField={1}&GetData=1", NameMovie, NameField) });
+
+            // webBrowser.Document.InvokeScript("SetVariable", new Object[] { String.Format("CurMovie={0}&CurField={1}&GetData=1", NameMovie, NameField) });
             return ScriptInterface.ForWaitGetData();
-                //GetGlobalVariable(webBrowser, "VarGetData").ToString();
+            //GetGlobalVariable(webBrowser, "VarGetData").ToString();
         }
 
         private static object GetGlobalVariable(WebBrowser browser, string variable)
