@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using SwiftyProject.Lib;
 
 namespace SwiftyProject
 {
@@ -13,20 +14,36 @@ namespace SwiftyProject
         public MainForm()
         {
             InitializeComponent();
+            
         }
 
         private void OpenFile_Click(object sender, EventArgs e)
         {
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                webBrowser.Navigate(openFileDialog.FileName);
-                //webBrowser1.Document.InvokeScript("SetVariable", new Object[] { "VarText1=6" });
+                SwiftyProject.Lib.ImportLib.OpenFile(webBrowser, openFileDialog.FileName);
             }
         }
 
+        int i = 0;
         private void ExampleSetVariable_Click(object sender, EventArgs e)
         {
-            webBrowser.Document.InvokeScript("SetVariable", new Object[] { "VarText1=6" });
+            Lib.MovieClip mc = new Lib.MovieClip(webBrowser, "MovieClip1");
+
+            mc._x = i++;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Lib.MovieClip mc = new Lib.MovieClip(webBrowser, "MovieClip1");
+            webBrowser.Document.InvokeScript("SetVariable", new Object[] { "VarText1=" + mc._x });
+        
+             
+        }
+
+
+
+
+
     }
 }
