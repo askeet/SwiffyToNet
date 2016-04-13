@@ -21,7 +21,8 @@
 	   //SetVariable("StrMovie=MovieClip1&GotoAndStop=2");
 	   SetGotoAndStop("MovieClip1","2");			
 	   //SetVariable("StrMovie=Text1&StrField=text&SetVar=100");
-	   SetField("Text1","text", i);	
+	   SetField("Text1","text", i);
+	   SetVariable("GetData=1"); 
     }
     document.getElementById("textChanger").onclick = reply_click;
 	
@@ -37,6 +38,13 @@
 
     var SetGotoAndStop = function(NameMovie,NumberFrame ){
       stage.setFlashVars("CurMovie="+NameMovie+"&GotoAndStop="+NumberFrame+"");	
+    }
+
+	var VarGetData = "";
+	function ReceiveDataFromAS(args) {
+	   VarGetData = args;
+	   window.external.EventForGetData(VarGetData);
+       //alert(args);
     }
 	
 	

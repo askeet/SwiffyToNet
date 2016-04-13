@@ -21,6 +21,17 @@ SetSetVar = function(value){
 
 addProperty("SetVar",GetStatus,SetSetVar);
 
+
+SetGetData = function(value){
+	//flash.external.ExternalInterface.call("jsFunction", "Hello");
+	//if( value== "1")
+	_root.getURL("javascript:ReceiveDataFromAS("+ _root[CurMovie][CurField] +");"); 
+	
+	//eval(CurMovie).gotoAndStop(value);	
+}
+addProperty("GetData",GetStatus,SetGetData);
+
+
 //CurMovie = MovieClip1;
 //GotoAndStop = 1;
 //CurField = "text";
