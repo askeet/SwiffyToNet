@@ -25,9 +25,8 @@ namespace SwiftyProject.Lib
             static object Sunc = new object();
             static ManualResetEvent oSignalEvent = new ManualResetEvent(false);
             public void EventForGetData(string variable)
-            {
-             
-                Variable = variable;
+            {             
+                Variable = (variable==null )?"":variable;
                 WaitEvent = false;
             }
           
@@ -60,31 +59,13 @@ namespace SwiftyProject.Lib
         public static string GetData(WebBrowser webBrowser, string NameMovie, string NameField)
         {
             webBrowser.Document.InvokeScript("SetVariable", new Object[] { String.Format("CurMovie={0}&CurField={1}&GetData=1", NameMovie, NameField) });
-
-            // webBrowser.Document.InvokeScript("SetVariable", new Object[] { String.Format("CurMovie={0}&CurField={1}&GetData=1", NameMovie, NameField) });
             return ScriptInterface.ForWaitGetData();
-            //GetGlobalVariable(webBrowser, "VarGetData").ToString();
         }
 
-        private static object GetGlobalVariable(WebBrowser browser, string variable)
+        public static string GetData(WebBrowser webBrowser,  string NameVariable)
         {
-            string[] variablePath = variable.Split('.');
-            int i = 0;
-            object result = null;
-            string variableName = "window";
-            while (i < variablePath.Length)
-            {
-                variableName = variableName + "." + variablePath[i];
-                result = browser.Document.InvokeScript("eval", new object[] { variableName });
-                if (result == null)
-                {
-                    return result;
-                }
-                i++;
-            }
-            return result;
+            webBrowser.Document.InvokeScript("SetVariable", new Object[] { String.Format("CurField={0}&GetData=0", NameVariable) });
+            return ScriptInterface.ForWaitGetData();
         }
-
-
     }
 }

@@ -17,12 +17,14 @@
     var reply_click = function()
     {
 	   i=i+1;
-	   SetVariable("VarText1=6");
+	  // SetVariable("VarText1=6");
 	   //SetVariable("StrMovie=MovieClip1&GotoAndStop=2");
 	   SetGotoAndStop("MovieClip1","2");			
 	   //SetVariable("StrMovie=Text1&StrField=text&SetVar=100");
 	   SetField("Text1","text", i);
-	   SetVariable("GetData=1"); 
+           //SetField("Text1","VarText1", i);
+	  //SetVariable("CurField=VarText1"); 
+          SetVariable("CurField=VarText1&GetData=0"); 
     }
     document.getElementById("textChanger").onclick = reply_click;
 	
@@ -44,7 +46,7 @@
 	function ReceiveDataFromAS(args) {
 	   VarGetData = args;
 	   window.external.EventForGetData(VarGetData);
-       //alert(args);
+           //alert(args);
     }
 	
 	

@@ -24,15 +24,19 @@ addProperty("SetVar",GetStatus,SetSetVar);
 
 SetGetData = function(value){
 	//flash.external.ExternalInterface.call("jsFunction", "Hello");
-	//if( value== "1")
-	_root.getURL("javascript:ReceiveDataFromAS("+ _root[CurMovie][CurField] +");"); 
-	
-	//eval(CurMovie).gotoAndStop(value);	
+	if( value== "1")
+		_root.getURL("javascript:ReceiveDataFromAS("+ _root[CurMovie][CurField] +");"); 
+	else
+		_root.getURL("javascript:ReceiveDataFromAS("+ _root[CurField] +");");
 }
 addProperty("GetData",GetStatus,SetGetData);
 
-
 //CurMovie = MovieClip1;
+
+
 //GotoAndStop = 1;
+//CurMovie = "Text1";
 //CurField = "text";
+//GetData = 1;
 //SetVar = 0;
+
