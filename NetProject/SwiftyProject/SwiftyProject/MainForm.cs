@@ -37,9 +37,9 @@ namespace SwiftyProject
         {
             Lib.MovieClip mc = new Lib.MovieClip(webBrowser, "MovieClip1");
 
-            
-            webBrowser.Document.InvokeScript("SetVariable", new Object[] { "VarText1=100"});
-            button1.Text = ImportLib.GetData(webBrowser, "VarText1");
+            ImportLib.SetVariable(webBrowser, "VarText2",100.ToString());
+            //webBrowser.Document.InvokeScript("SetVariable", new Object[] { "VarText1=100"});
+            button1.Text = ImportLib.GetData(webBrowser, "_root.VarText2");
 
 
         }
