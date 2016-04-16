@@ -23,10 +23,15 @@ SetRunFunc = function(value){
 	if(curField!="0"){
 		var arr:Array = new Array(5); 
 		arr = value.split(";;"); 
+				
         GetResFunc = 
-		eval((CurMovie!="0")? CurMovie+"."+curField : curField)
+		eval((CurMovie!="0")? CurMovie+"."+String(CurField) : String(curField))
 		(arr[0],arr[1],arr[2], arr[3],arr[4]);	
 		//trace(GetResFunc); 
+		//Text1.text = CurMovie;
+		//Text2.text = CurField;
+		
+		//trace("cm="+CurMovie);
 	}		
 }
 addProperty("RunFunc",GetStatus,SetRunFunc);
@@ -63,6 +68,9 @@ addProperty("GetData",GetStatus,SetGetData);
 //GetData = 1;
 //SetVar = 0;
 //CountParamFunc = 2;
+//curField = "gotoAndStop";
 //curField = "stop";
 //curField = "Func";
-//RunFunc = "1;;2";
+//RunFunc = "3;;2";
+
+

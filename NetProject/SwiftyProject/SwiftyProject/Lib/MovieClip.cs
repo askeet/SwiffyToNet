@@ -129,7 +129,9 @@ namespace SwiftyProject.Lib
         public int _yscale;
 
         //Переводит воспроизводящую головку мувиклипа на указанный кадр и остонавливает воспроизведение.
-        public void gotoAndStop() { }
+        public void gotoAndStop(byte NumberFrame) {
+            ImportLib.RunFunc(webBrowser, nameMovie, "gotoAndStop", NumberFrame.ToString());
+        }
 
         //Начинает рисование заливки в указанном мувиклипе.
         public void beginFill() { }

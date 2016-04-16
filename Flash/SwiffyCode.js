@@ -19,12 +19,15 @@
 	   i=i+1;
 	  // SetVariable("VarText1=6");
 	   //SetVariable("StrMovie=MovieClip1&GotoAndStop=2");
-	   SetGotoAndStop("MovieClip1","2");			
+	   //SetGotoAndStop("MovieClip1","2");			
 	   //SetVariable("StrMovie=Text1&StrField=text&SetVar=100");
-	   SetField("Text1","text", i);
+	   //SetField("Text1","text", i);
            //SetField("Text1","VarText1", i);
 	  //SetVariable("CurField=VarText1"); 
-          SetVariable("CurField=VarText1&GetData=0"); 
+      //    SetVariable("CurField=VarText1&GetData=0");
+		 //SetRunFunc("MovieClip1", "gotoAndStop","3;;2");
+
+		 SetRunFunc("MovieClip1", "stop","3;;2");
     }
     document.getElementById("textChanger").onclick = reply_click;
 	
@@ -40,6 +43,11 @@
 
     var SetGotoAndStop = function(NameMovie,NumberFrame ){
       stage.setFlashVars("CurMovie="+NameMovie+"&GotoAndStop="+NumberFrame+"");	
+    }
+	
+	var SetRunFunc = function(NameMovie,NameField, Variable){
+      stage.setFlashVars("CountParams=1");	
+      stage.setFlashVars("CurMovie="+NameMovie+"&CurField="+NameField+"&RunFunc="+Variable);	
     }
 
 	var VarGetData = "";

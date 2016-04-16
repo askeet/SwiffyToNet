@@ -30,14 +30,20 @@ namespace SwiftyProject.Lib
                 WaitEvent = false;
             }
           
-            public static string ForWaitGetData()
+            public static string ForWaitGetData(int MaxWait = 500)
             {
                 System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
                 sw.Start();
                 WaitEvent = true;
-                while (WaitEvent)
+                long Begin = DateTime.Now.Ticks;
+                while (WaitEvent )
                 {
                     Application.DoEvents();
+                    if(new TimeSpan(DateTime.Now.Ticks - Begin).Milliseconds > MaxWait)
+                    {
+                        Variable = "";
+                        break;
+                    } 
                 }
                 sw.Stop();
                 Console.WriteLine("Time="+  sw.ElapsedMilliseconds);
@@ -66,6 +72,16 @@ namespace SwiftyProject.Lib
         {
             webBrowser.Document.InvokeScript("SetVariable", new Object[] { String.Format("CurField={0}&GetData=0", NameVariable) });
             return ScriptInterface.ForWaitGetData();
+        }
+
+        public static void RunFunc(WebBrowser webBrowser, string NameMovie, string NameFunc, string Value)
+        {
+            webBrowser.Document.InvokeScript("SetVariable", new Object[] { String.Format("CurMovie=" + NameMovie + "&CurField=" + NameFunc + "&RunFunc=" + Value) });
+        }
+
+        public object GetResultFunc(WebBrowser webBrowser)
+        {
+            return GetData(webBrowser, "GetResFunc");
         }
     }
 }
