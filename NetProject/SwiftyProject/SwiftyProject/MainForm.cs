@@ -30,8 +30,10 @@ namespace SwiftyProject
         {
             Lib.MovieClip mc = new Lib.MovieClip(webBrowser, "MovieClip1");
 
-            mc._x += mc._x;
-            mc.gotoAndStop((byte)i++);
+            mc._x += 1;
+            //mc.gotoAndStop((byte)i++);
+            ExampleSetVariable.Text = mc._totalframes.ToString();
+            //mc.enabled = !mc.enabled;
 
         }
 
