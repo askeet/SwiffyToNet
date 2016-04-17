@@ -30,15 +30,15 @@ namespace SwiftyProject
         {
             Lib.MovieClip mc = new Lib.MovieClip(webBrowser, "MovieClip1");
 
-            mc._x = i++;
-            mc.gotoAndStop((byte)i);
+            mc._x += mc._x;
+            mc.gotoAndStop((byte)i++);
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Lib.MovieClip mc = new Lib.MovieClip(webBrowser, "MovieClip1");
-
+            //Convert.
             ImportLib.SetVariable(webBrowser, "VarText2",100.ToString());
             button1.Text = ImportLib.GetData(webBrowser, "_root.VarText2");
          

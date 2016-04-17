@@ -101,11 +101,10 @@ namespace SwiftyProject.Lib
         //Координата x мувиклипа.
         public float _x 
         {
-            set { ImportLib.SetField(webBrowser, nameMovie, "_x",value.ToString()); }
+            set { ImportLib.SetField(webBrowser, nameMovie, "_x",Converter.ToString(value)); }
             get {
                 string Var = ImportLib.GetData(webBrowser, nameMovie, "_x");
-                if (Var == String.Empty) { Var = "-1"; };
-                return Convert.ToSingle(Var);
+                return Converter.StringTo<float>(Var);
             }
         }
 
