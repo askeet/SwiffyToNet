@@ -24,7 +24,16 @@ namespace SwiftyProject.Lib
 
         public static T StringTo<T>(string Value)
         {
-            if (Value == String.Empty) { Value = "0"; };
+            if (typeof(T) == typeof(bool))
+            {
+                if (Value == "0" || Value == String.Empty) Value = "False";
+                if (Value == "Истина") Value = "True";
+
+            }else
+                 if (Value == String.Empty) Value = "0";
+
+            
+            
             return (T)Convert.ChangeType(Value, typeof(T));
         }
 

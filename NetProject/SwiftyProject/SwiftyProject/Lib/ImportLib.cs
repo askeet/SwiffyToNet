@@ -12,8 +12,25 @@ namespace SwiftyProject.Lib
 
         public static void OpenFile(WebBrowser webBrowser, string FileName)
         {                          
-            webBrowser.Navigate(FileName);               
+            webBrowser.Navigate(FileName);     
+            webBrowser.DocumentCompleted += webBrowser_DocumentCompleted;
+        }
+
+        private static void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            WebBrowser webBrowser = sender as WebBrowser;
+            var jsCode =
+                "var SetVariable = function(Variable){ stage.setFlashVars(Variable);}; " +
+                "function ReceiveDataFromAS(args) {" +
+                   "window.external.EventForGetData(args);" +
+                "};";
+            // it works on IE
+            webBrowser.Document.InvokeScript("execScript", new Object[] { jsCode, "JavaScript" });
+            // register callback from JS
             webBrowser.ObjectForScripting = new ScriptInterface();
+            // scale
+            HtmlElement scale = webBrowser.Document.GetElementById("swiffycontainer");  //Size = new System.Drawing.Size(webBrowser.Width, webBrowser.Height);
+            scale.Style = String.Format("width: {0}px; height: {1}px;", webBrowser.Width, webBrowser.Height);
         }
 
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
