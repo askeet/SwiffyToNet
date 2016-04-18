@@ -96,7 +96,7 @@ namespace SwiftyProject.Lib
             webBrowser.Document.InvokeScript("SetVariable", new Object[] { String.Format("CurMovie=" + NameMovie + "&CurField=" + NameFunc + "&RunFunc=" + Value) });
         }
 
-        public object GetResultFunc(WebBrowser webBrowser)
+        public static string GetResultFunc(WebBrowser webBrowser)
         {
             return GetData(webBrowser, "GetResFunc");
         }

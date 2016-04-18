@@ -31,10 +31,8 @@ namespace SwiftyProject.Lib
 
             }else
                  if (Value == String.Empty) Value = "0";
-
             
-            
-            return (T)Convert.ChangeType(Value, typeof(T));
+            return (T)Convert.ChangeType(Value, typeof(T), new CultureInfo("en-US"));
         }
 
 

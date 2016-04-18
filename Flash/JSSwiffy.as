@@ -4,7 +4,7 @@
 var CurMovie:String = "0";
 var CurField:String = "0";
 var CountParams:Number = 0;
-var GetResFunc;
+var GetResFunc:String = "";
 
 GetStatus=function()
 {
@@ -18,20 +18,21 @@ addProperty("GotoAndStop",GetStatus,SetGotoAndStop);
 
 // Run any function 
 // value is string like "1;;2;;3" where ";;" splits params
-// Max count params for func is 5
+// Max count params for func is 6
 SetRunFunc = function(value){
 	if(curField!="0"){
-		var arr:Array = new Array(5); 
+		var arr:Array = new Array(6); 
 		arr = value.split(";;"); 
 				
         GetResFunc = 
-		eval((CurMovie!="0")? CurMovie+"."+String(CurField) : String(curField))
-		(arr[0],arr[1],arr[2], arr[3],arr[4]);	
-		//trace(GetResFunc); 
+		eval((CurMovie!="0")? CurMovie+"."+String(CurField) : String(CurField))
+		(arr[0],arr[1],arr[2], arr[3],arr[4],arr[5]);	
+
+
 		//Text1.text = CurMovie;
 		//Text2.text = CurField;
-		
-		//trace("cm="+CurMovie);
+		//trace(GetResFunc);
+		//trace("cm="+CurMovie + " cf=" + CurField);
 	}		
 }
 addProperty("RunFunc",GetStatus,SetRunFunc);
@@ -53,24 +54,30 @@ addProperty("SetVar",GetStatus,SetSetVar);
 SetGetData = function(value){
 	//flash.external.ExternalInterface.call("jsFunction", "Hello");
 	if( value== "1")
-		_root.getURL("javascript:ReceiveDataFromAS("+ _root[CurMovie][CurField] +");"); 
+		_root.getURL("javascript:ReceiveDataFromAS('"+ _root[CurMovie][CurField] +"');"); 
 	else
-		_root.getURL("javascript:ReceiveDataFromAS("+ _root[CurField] +");");
+		_root.getURL("javascript:ReceiveDataFromAS('"+_root[CurField]+"');");
+		//_root.getURL("javascript:ReceiveDataFromAS("+ _root[CurField] +");");
 }
 addProperty("GetData",GetStatus,SetGetData);
+// Создаем мувиклип-родитель для контейнера
+//trace (this.createEmptyMovieClip("logo_mc1", this.getNextHighestDepth()));
+// Создаем контейнер внутри "mc_1"
+// в этот мувиклип будет загружено изображение
+//logo_mc.createEmptyMovieClip("container_mc",0);
+//logo_mc.container_mc.loadMovie("http://www.macromedia.com/images/shared/product_boxes/80x92/studio_flashpro.jpg");
 
 
-
-//CurMovie = MovieClip1;
+//CurMovie = "0";
 //GotoAndStop = 1;
 //CurMovie = "MovieClip1";
-//CurField = "text";
+//CurField = "createEmptyMovieClip";
 //GetData = 1;
 //SetVar = 0;
 //CountParamFunc = 2;
 //curField = "gotoAndStop";
 //curField = "stop";
 //curField = "Func";
-//RunFunc = "3;;2";
+//RunFunc = "logo_mc;;"+this.getNextHighestDepth();
 
 

@@ -12,7 +12,10 @@ namespace SwiftyProject.Lib
         public MovieClip(WebBrowser webBrowser, string nameMovie) {
             this.webBrowser = webBrowser;
             this.nameMovie = nameMovie;    
+
         }
+
+        #region Property
 
         //Уровень прозрачности мувиклипа.
         public int _alpha
@@ -327,11 +330,49 @@ namespace SwiftyProject.Lib
                 return Converter.StringTo<float>(Var);
             }
         }
+        #endregion
 
+        #region Functions
         //Переводит воспроизводящую головку мувиклипа на указанный кадр и остонавливает воспроизведение.
         public void gotoAndStop(byte NumberFrame) {
             ImportLib.RunFunc(webBrowser, nameMovie, "gotoAndStop", NumberFrame.ToString());
         }
+
+        public MovieClip createEmptyMovieClip(string instanceName, byte depth)
+        {
+            ImportLib.RunFunc(webBrowser, nameMovie, "createEmptyMovieClip", Converter.ToString(instanceName, depth));
+            return new MovieClip(webBrowser, ImportLib.GetResultFunc(webBrowser));
+        }
+
+        public void createTextField(string instanceName, byte depth, float x, float y, float width, float height)
+        {
+            ImportLib.RunFunc(webBrowser, nameMovie, "createTextField", 
+                Converter.ToString(instanceName, depth,x,y, width, height));
+        }
+
+        public string getInstanceAtDepth(byte depth)
+        {
+            ImportLib.RunFunc(webBrowser, nameMovie, "getInstanceAtDepth", depth.ToString());
+            string Var = ImportLib.GetResultFunc(webBrowser).ToString();
+            return Var;
+        }
+
+        public byte getNextHighestDepth()
+        {
+            ImportLib.RunFunc(webBrowser, nameMovie, "getNextHighestDepth", "");
+            string Var = ImportLib.GetResultFunc(webBrowser).ToString();
+            return Converter.StringTo<byte>(Var);
+        }
+
+        public void loadMovie(string url, string variables="")
+        {
+            string Value = "";
+            if (variables == String.Empty) Value = Converter.ToString(url);
+            else Value = Converter.ToString(url, variables);
+            ImportLib.RunFunc(webBrowser, nameMovie, "loadMovie", Value);
+        }
+
+        #region Functions For Paint
 
         //Начинает рисование заливки в указанном мувиклипе.
         public void beginFill(int rgb, int alpha=-1) {
@@ -378,6 +419,9 @@ namespace SwiftyProject.Lib
         public void moveTo(float x, float y) {
             ImportLib.RunFunc(webBrowser, nameMovie, "moveTo", Converter.ToString(x, y));
         }
+        #endregion
 
+
+        #endregion
     }
 }

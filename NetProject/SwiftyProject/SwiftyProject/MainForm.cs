@@ -29,7 +29,7 @@ namespace SwiftyProject
         private void ExampleSetVariable_Click(object sender, EventArgs e)
         {
             Lib.MovieClip mc = new Lib.MovieClip(webBrowser, "MovieClip1");
-
+            i++;
             mc._x += 1;
             //mc.gotoAndStop((byte)i++);
             ExampleSetVariable.Text = mc._totalframes.ToString();
@@ -39,12 +39,13 @@ namespace SwiftyProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Lib.MovieClip mc = new Lib.MovieClip(webBrowser, "MovieClip1");
-            //Convert.
-            ImportLib.SetVariable(webBrowser, "VarText2",100.ToString());
-            button1.Text = ImportLib.GetData(webBrowser, "_root.VarText2");
-         
-           // ImportLib()
+            Lib.MovieClip mc = new Lib.MovieClip(webBrowser, "");
+            // Создаем мувиклип-родитель для контейнера
+            Lib.MovieClip logo_mc = mc.createEmptyMovieClip("logo_mc", mc.getNextHighestDepth());
+            // Создаем контейнер внутри "mc_1"
+            // в этот мувиклип будет загружено изображение
+            Lib.MovieClip container_mc = logo_mc.createEmptyMovieClip("container_mc", 0);
+            container_mc.loadMovie("http://www.macromedia.com/images/shared/product_boxes/80x92/studio_flashpro.jpg");
 
 
         }
