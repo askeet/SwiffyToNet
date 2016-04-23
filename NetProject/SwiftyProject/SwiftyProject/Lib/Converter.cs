@@ -10,6 +10,8 @@ namespace SwiftyProject.Lib
 {
     public class Converter
     {
+        public const string ValueNotFind = "undefined";
+
         public static string ToString(params object[] args)
         {
             string str = "";

@@ -39,20 +39,45 @@ namespace SwiftyProject
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             Lib.MovieClip mc = new Lib.MovieClip(webBrowser, "");
+
             // Создаем мувиклип-родитель для контейнера
-            Lib.MovieClip logo_mc = mc.createEmptyMovieClip("logo_mc", mc.getNextHighestDepth());
-            // Создаем контейнер внутри "mc_1"
-            // в этот мувиклип будет загружено изображение
-            Lib.MovieClip container_mc = logo_mc.createEmptyMovieClip("container_mc", 0);
-            container_mc.loadMovie("http://www.macromedia.com/images/shared/product_boxes/80x92/studio_flashpro.jpg");
+            //Lib.MovieClip logo_mc = mc.createEmptyMovieClip("logo_mc", mc.getNextHighestDepth());
+            //// Создаем контейнер внутри "mc_1"
+            //// в этот мувиклип будет загружено изображение
+            //Lib.MovieClip container_mc = logo_mc.createEmptyMovieClip("container_mc", mc.getNextHighestDepth());
+            //container_mc.loadMovie("http://www.macromedia.com/images/shared/product_boxes/80x92/studio_flashpro.jpg");
 
 
+            Lib.MovieClip square_mc = mc.createEmptyMovieClip("square_mc", 1);
+            //Lib.MovieClip square_mc = new MovieClip(webBrowser, "MovieClip1");
+            square_mc._x = 10;
+            square_mc._y = 10;
+            square_mc.beginFill(0xFF0000);
+            square_mc.moveTo(0, 0);
+            square_mc.lineTo(100, 0);
+            square_mc.lineTo(100, 100);
+            square_mc.lineTo(0, 100);
+            square_mc.lineTo(0, 0);
+            square_mc.endFill();
+
+            Lib.MovieClip.RBounds b = square_mc.getBounds("_root");
+
+
+
+            button1.Text = b.yMax.ToString();
+                //mc.getBounds("MovieClip1").yMax; //mc.getInstanceAtDepth(0);
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Lib.MovieClip mc = new MovieClip(webBrowser, "MovieClip1");
+            PointF f = mc.localToGlobal(new PointF(11, 10));
+            Console.WriteLine("X=" + f.X + " Y=" + f.Y);
+            f = mc.globalToLocal(new PointF(f.X, f.Y));      
+            Console.WriteLine("X1="+f.X +" Y1=" + f.Y);
 
-
-
-
+        }
     }
 }

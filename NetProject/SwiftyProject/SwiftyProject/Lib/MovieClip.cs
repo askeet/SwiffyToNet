@@ -273,6 +273,7 @@ namespace SwiftyProject.Lib
             set { ImportLib.SetField(webBrowser, nameMovie, "_x",Converter.ToString(value)); }
             get {
                 string Var = ImportLib.GetData(webBrowser, nameMovie, "_x");
+                //string Var = ImportLib.GetData(webBrowser, "square_mc", "_x");
                 return Converter.StringTo<float>(Var);
             }
         }
@@ -350,18 +351,41 @@ namespace SwiftyProject.Lib
                 Converter.ToString(instanceName, depth,x,y, width, height));
         }
 
+        public int getDepth()
+        {
+            ImportLib.RunFunc(webBrowser, nameMovie, "getDepth", "");
+            return Converter.StringTo<int>( ImportLib.GetResultFunc(webBrowser));
+        }
+
         public string getInstanceAtDepth(byte depth)
         {
             ImportLib.RunFunc(webBrowser, nameMovie, "getInstanceAtDepth", depth.ToString());
-            string Var = ImportLib.GetResultFunc(webBrowser).ToString();
+            string Var = ImportLib.GetResultFunc(webBrowser);
+
             return Var;
         }
 
         public byte getNextHighestDepth()
         {
             ImportLib.RunFunc(webBrowser, nameMovie, "getNextHighestDepth", "");
-            string Var = ImportLib.GetResultFunc(webBrowser).ToString();
+            string Var = ImportLib.GetResultFunc(webBrowser);
             return Converter.StringTo<byte>(Var);
+        }
+
+        public struct RBounds { public float xMin, xMax, yMin, yMax; };
+        public RBounds getBounds(string targetCoordinateSpace)
+        {
+            ImportLib.RunFunc(webBrowser, nameMovie, "getBounds", targetCoordinateSpace);
+            RBounds dObject = new RBounds();
+            string xMin = ImportLib.GetData(webBrowser, "GetResFunc", "xMin");
+            if (xMin != Converter.ValueNotFind)
+            {
+                dObject.xMin = Converter.StringTo<float>(xMin);
+                dObject.xMax = Converter.StringTo<float>(ImportLib.GetData(webBrowser, "GetResFunc", "xMax"));
+                dObject.yMin = Converter.StringTo<float>(ImportLib.GetData(webBrowser, "GetResFunc", "yMin"));
+                dObject.yMax = Converter.StringTo<float>(ImportLib.GetData(webBrowser, "GetResFunc", "yMax"));
+            }
+            return dObject;
         }
 
         public void loadMovie(string url, string variables="")
@@ -370,6 +394,29 @@ namespace SwiftyProject.Lib
             if (variables == String.Empty) Value = Converter.ToString(url);
             else Value = Converter.ToString(url, variables);
             ImportLib.RunFunc(webBrowser, nameMovie, "loadMovie", Value);
+        }
+
+
+        public System.Drawing.PointF localToGlobal(System.Drawing.PointF point)
+        {
+            System.Drawing.PointF ret = new System.Drawing.PointF();
+            ImportLib.SetField(webBrowser, "UserObject","x", Converter.ToString(point.X),true);
+            ImportLib.SetField(webBrowser, "UserObject","y", Converter.ToString(point.Y), true);
+            ImportLib.RunFunc(webBrowser, nameMovie, "localToGlobal", "UserObject", true);
+            ret.X = Converter.StringTo<float>(ImportLib.GetData(webBrowser, "UserObject.x"));
+            ret.Y = Converter.StringTo<float>(ImportLib.GetData(webBrowser, "UserObject.y"));
+            return ret;
+        }
+
+        public System.Drawing.PointF globalToLocal(System.Drawing.PointF point)
+        {
+            System.Drawing.PointF ret = new System.Drawing.PointF();
+            ImportLib.SetField(webBrowser, "UserObject", "x", Converter.ToString(point.X), true);
+            ImportLib.SetField(webBrowser, "UserObject", "y", Converter.ToString(point.Y), true);
+            ImportLib.RunFunc(webBrowser, nameMovie, "globalToLocal", "UserObject", true);
+            ret.X = Converter.StringTo<float>(ImportLib.GetData(webBrowser, "UserObject.x"));
+            ret.Y = Converter.StringTo<float>(ImportLib.GetData(webBrowser, "UserObject.y"));
+            return ret;
         }
 
         #region Functions For Paint

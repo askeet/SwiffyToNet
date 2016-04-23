@@ -33,14 +33,14 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.ExampleSetVariable = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // OpenFile
             // 
-            this.OpenFile.Location = new System.Drawing.Point(21, 15);
-            this.OpenFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OpenFile.Location = new System.Drawing.Point(32, 23);
             this.OpenFile.Name = "OpenFile";
-            this.OpenFile.Size = new System.Drawing.Size(91, 40);
+            this.OpenFile.Size = new System.Drawing.Size(136, 62);
             this.OpenFile.TabIndex = 0;
             this.OpenFile.Text = "Open File HTML";
             this.OpenFile.UseVisualStyleBackColor = true;
@@ -48,12 +48,12 @@
             // 
             // webBrowser
             // 
-            this.webBrowser.Location = new System.Drawing.Point(145, 15);
-            this.webBrowser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.webBrowser.MinimumSize = new System.Drawing.Size(13, 13);
+            this.webBrowser.Location = new System.Drawing.Point(218, 23);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
             this.webBrowser.ScriptErrorsSuppressed = true;
-            this.webBrowser.Size = new System.Drawing.Size(246, 178);
+            this.webBrowser.ScrollBarsEnabled = false;
+            this.webBrowser.Size = new System.Drawing.Size(350, 250);
             this.webBrowser.TabIndex = 1;
             // 
             // openFileDialog
@@ -62,10 +62,9 @@
             // 
             // ExampleSetVariable
             // 
-            this.ExampleSetVariable.Location = new System.Drawing.Point(21, 66);
-            this.ExampleSetVariable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ExampleSetVariable.Location = new System.Drawing.Point(32, 102);
             this.ExampleSetVariable.Name = "ExampleSetVariable";
-            this.ExampleSetVariable.Size = new System.Drawing.Size(91, 40);
+            this.ExampleSetVariable.Size = new System.Drawing.Size(136, 62);
             this.ExampleSetVariable.TabIndex = 2;
             this.ExampleSetVariable.Text = "Set Var";
             this.ExampleSetVariable.UseVisualStyleBackColor = true;
@@ -73,25 +72,34 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(21, 110);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(32, 169);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 40);
+            this.button1.Size = new System.Drawing.Size(136, 62);
             this.button1.TabIndex = 3;
             this.button1.Text = "Set Var";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(32, 237);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(136, 62);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Set Var";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 201);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(628, 309);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ExampleSetVariable);
             this.Controls.Add(this.webBrowser);
             this.Controls.Add(this.OpenFile);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.ResumeLayout(false);
@@ -105,6 +113,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button ExampleSetVariable;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

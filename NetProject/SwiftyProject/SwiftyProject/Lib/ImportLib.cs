@@ -68,20 +68,30 @@ namespace SwiftyProject.Lib
             }
 
         }
-
-        public static void SetVariable(WebBrowser webBrowser,string Variable, string Value)
+        /// <summary>
+        /// This function for set any variable doesn't work with Fields object.
+        /// For it task you need to use SetField()
+        /// </summary>
+        public static void SetVariable(WebBrowser webBrowser,string Variable, string Value, bool ValueIsNumber = false)
         {
-            webBrowser.Document.InvokeScript("SetVariable", new Object[] { String.Format("{0}={1}",Variable,Value)});
+            webBrowser.Document.InvokeScript("SetVariable", new Object[] {
+                String.Format(
+                 (ValueIsNumber?"TypeVarIsNum=1&":"") + 
+                "{0}={1}",Variable,Value)});
         }
 
-        public static void SetField(WebBrowser webBrowser, string NameMovie,string NameField, string Value)
+        public static void SetField(WebBrowser webBrowser, string NameMovie,string NameField, string Value, bool ValueIsNumber = false)
         {
-            webBrowser.Document.InvokeScript("SetVariable", new Object[] { String.Format("CurMovie={0}&CurField={1}&SetVar={2}", NameMovie, NameField, Value) });   
+            webBrowser.Document.InvokeScript("SetVariable", new Object[] {
+                String.Format("CurMovie={0}&CurField={1}"+
+                (ValueIsNumber?"&TypeVarIsNum=1":"") +
+                "&SetVar={2}", NameMovie, NameField, Value) });   
         }
 
         public static string GetData(WebBrowser webBrowser, string NameMovie, string NameField)
         {
-            webBrowser.Document.InvokeScript("SetVariable", new Object[] { String.Format("CurMovie={0}&CurField={1}&GetData=1", NameMovie, NameField) });
+            webBrowser.Document.InvokeScript("SetVariable", new Object[] {
+                String.Format("CurMovie={0}&CurField={1}&GetData=1", NameMovie, NameField) });
             return ScriptInterface.ForWaitGetData();
         }
 
@@ -91,9 +101,12 @@ namespace SwiftyProject.Lib
             return ScriptInterface.ForWaitGetData();
         }
 
-        public static void RunFunc(WebBrowser webBrowser, string NameMovie, string NameFunc, string Value)
+        public static void RunFunc(WebBrowser webBrowser, string NameMovie, string NameFunc, string Value, bool FirstValueIsObject = false)
         {
-            webBrowser.Document.InvokeScript("SetVariable", new Object[] { String.Format("CurMovie=" + NameMovie + "&CurField=" + NameFunc + "&RunFunc=" + Value) });
+            webBrowser.Document.InvokeScript("SetVariable", 
+                new Object[] { String.Format("CurMovie={0}&CurField={1}"+
+                ((FirstValueIsObject)?"&KindRunFunc=1" :"") + "&RunFunc={2}",  
+                NameMovie , NameFunc , Value) });
         }
 
         public static string GetResultFunc(WebBrowser webBrowser)
