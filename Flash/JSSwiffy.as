@@ -63,10 +63,23 @@ addProperty("SetVar",GetStatus,SetSetVar);
 // else result= CurField
 SetGetData = function(value){
 	//flash.external.ExternalInterface.call("jsFunction", "Hello");
-	if( value== "1")
-		_root.getURL("javascript:ReceiveDataFromAS('"+ eval(String(CurMovie))[String(CurField)] +"');"); 
-	else
-		_root.getURL("javascript:ReceiveDataFromAS('"+eval(String(CurField))+"');");
+	if( value== "1"){
+		
+		if(flash.external.ExternalInterface.available){
+			flash.external.ExternalInterface.call("window.parent.ReceiveDataFromAS", String(eval(String(CurMovie))[String(CurField)]));
+		}else{
+			Text1.text = "!IE1";
+			_root.getURL("javascript:ReceiveDataFromAS('"+ eval(String(CurMovie))[String(CurField)] +"');"); 
+		}
+	}
+	else{
+		//
+		if(flash.external.ExternalInterface.available) 
+			flash.external.ExternalInterface.call("window.parent.ReceiveDataFromAS",  String(eval(String(CurField))));
+		else
+			Text2.text = "!IE2";
+			_root.getURL("javascript:ReceiveDataFromAS('"+eval(String(CurField))+"');");
+		}
 }
 addProperty("GetData",GetStatus,SetGetData);
 

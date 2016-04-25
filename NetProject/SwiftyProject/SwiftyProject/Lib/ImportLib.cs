@@ -51,7 +51,7 @@ namespace SwiftyProject.Lib
             {
                 System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
                 sw.Start();
-                WaitEvent = true;
+               // WaitEvent = true;
                 long Begin = DateTime.Now.Ticks;
                 while (WaitEvent )
                 {
@@ -90,6 +90,7 @@ namespace SwiftyProject.Lib
 
         public static string GetData(WebBrowser webBrowser, string NameMovie, string NameField)
         {
+            ScriptInterface.WaitEvent = true;
             webBrowser.Document.InvokeScript("SetVariable", new Object[] {
                 String.Format("CurMovie={0}&CurField={1}&GetData=1", NameMovie, NameField) });
             return ScriptInterface.ForWaitGetData();
@@ -97,6 +98,7 @@ namespace SwiftyProject.Lib
 
         public static string GetData(WebBrowser webBrowser,  string NameVariable)
         {
+            ScriptInterface.WaitEvent = true;
             webBrowser.Document.InvokeScript("SetVariable", new Object[] { String.Format("CurField={0}&GetData=0", NameVariable) });
             return ScriptInterface.ForWaitGetData();
         }
