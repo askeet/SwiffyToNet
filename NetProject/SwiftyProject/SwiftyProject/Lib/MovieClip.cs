@@ -396,7 +396,6 @@ namespace SwiftyProject.Lib
             ImportLib.RunFunc(webBrowser, nameMovie, "loadMovie", Value);
         }
 
-
         public System.Drawing.PointF localToGlobal(System.Drawing.PointF point)
         {
             System.Drawing.PointF ret = new System.Drawing.PointF();
@@ -418,6 +417,21 @@ namespace SwiftyProject.Lib
             ret.Y = Converter.StringTo<float>(ImportLib.GetData(webBrowser, "UserObject.y"));
             return ret;
         }
+
+        public bool hitTest(float x, float y, bool shapeFlag)
+        {
+            ImportLib.RunFunc(webBrowser, nameMovie, "hitTest", Converter.ToString(x, y, shapeFlag));
+            string Var = ImportLib.GetResultFunc(webBrowser);
+            return Converter.StringTo<bool>(Var);
+        }
+
+        public bool hitTest(string targetObject)
+        {
+            ImportLib.RunFunc(webBrowser, nameMovie, "hitTest", targetObject,true);
+            string Var = ImportLib.GetResultFunc(webBrowser);
+            return Converter.StringTo<bool>(Var);
+        }
+        //my_mc.hitTest(target:Object) : Boolean
 
         #region Functions For Paint
 
