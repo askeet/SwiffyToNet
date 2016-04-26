@@ -28,7 +28,7 @@ namespace SwiftyProject.Lib
         {
             if (typeof(T) == typeof(bool))
             {
-                if (Value == "0" || Value == String.Empty) Value = "False";
+                if (Value == "0" || Value == String.Empty || Value.Equals("undefined")) Value = "False";
                 if (Value == "Истина") Value = "True";
 
             }else

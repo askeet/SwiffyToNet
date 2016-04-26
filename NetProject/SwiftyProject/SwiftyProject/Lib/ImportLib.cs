@@ -15,6 +15,7 @@ namespace SwiftyProject.Lib
         {                          
             webBrowser.Navigate(FileName);     
             webBrowser.DocumentCompleted += webBrowser_DocumentCompleted;
+            ME = new MouseEvent(webBrowser);
         }
 
         private static void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -31,9 +32,9 @@ namespace SwiftyProject.Lib
             webBrowser.ObjectForScripting = new ScriptInterface();
             // scale
             HtmlElement scale = webBrowser.Document.GetElementById("swiffycontainer");  //Size = new System.Drawing.Size(webBrowser.Width, webBrowser.Height);
-            scale.Style = String.Format("width: {0}px; height: {1}px;", webBrowser.Width, webBrowser.Height);
+            //scale.Style = String.Format("width: {0}px; height: {1}px;", webBrowser.Width, webBrowser.Height);
 
-            ME = new MouseEvent(webBrowser);
+          
         }
 
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -66,7 +67,8 @@ namespace SwiftyProject.Lib
                     } 
                 }
                 sw.Stop();
-                Console.WriteLine("Time="+  sw.ElapsedMilliseconds);
+                if(sw.ElapsedMilliseconds > 0)
+                    Console.WriteLine("Time="+  sw.ElapsedMilliseconds);
                 return Variable;
             }
 
