@@ -9,6 +9,7 @@ namespace SwiftyProject.Lib
 {
     public class ImportLib
     {
+        public static MouseEvent ME;
 
         public static void OpenFile(WebBrowser webBrowser, string FileName)
         {                          
@@ -31,6 +32,8 @@ namespace SwiftyProject.Lib
             // scale
             HtmlElement scale = webBrowser.Document.GetElementById("swiffycontainer");  //Size = new System.Drawing.Size(webBrowser.Width, webBrowser.Height);
             scale.Style = String.Format("width: {0}px; height: {1}px;", webBrowser.Width, webBrowser.Height);
+
+            ME = new MouseEvent(webBrowser);
         }
 
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]

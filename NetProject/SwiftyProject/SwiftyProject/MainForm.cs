@@ -22,7 +22,14 @@ namespace SwiftyProject
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 SwiftyProject.Lib.ImportLib.OpenFile(webBrowser, openFileDialog.FileName);
+              
             }
+        }
+
+        private void ME_onMouseMoved(object sender, MouseEventArgs e)
+        {
+            Lib.MovieClip mc = new MovieClip(webBrowser, "square_mc");
+            Console.WriteLine(mc.hitTest(e.X,e.Y,true));
         }
 
         int i = 0;
@@ -48,7 +55,7 @@ namespace SwiftyProject
             //// в этот мувиклип будет загружено изображение
             //Lib.MovieClip container_mc = logo_mc.createEmptyMovieClip("container_mc", mc.getNextHighestDepth());
             //container_mc.loadMovie("http://www.macromedia.com/images/shared/product_boxes/80x92/studio_flashpro.jpg");
-
+            ImportLib.ME.onMouseMoved += ME_onMouseMoved;
 
             Lib.MovieClip square_mc = mc.createEmptyMovieClip("square_mc", 1);
             //Lib.MovieClip square_mc = new MovieClip(webBrowser, "MovieClip1");

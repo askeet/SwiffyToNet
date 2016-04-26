@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lib\MouseEvent.cs" />
     <Compile Include="Lib\Converter.cs" />
     <Compile Include="Lib\ImportLib.cs" />
     <Compile Include="Lib\MovieClip.cs" />
